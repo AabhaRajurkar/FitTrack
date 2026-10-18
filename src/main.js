@@ -45,7 +45,7 @@ document.addEventListener('click',e=>{
  case 'start':state.timer=45;state.completed=false;go('active');break;case 'exit':go('details');break;
  case 'timer':if(state.running){stopTimer();render();}else{state.running=true;a.textContent='Ⅱ Pause';state.interval=setInterval(()=>{state.timer=Math.max(0,state.timer-1);const t=$('#timer');if(t)t.textContent=String(Math.floor(state.timer/60)).padStart(2,'0')+':'+String(state.timer%60).padStart(2,'0');if(state.timer===0){stopTimer();toast('Rest timer complete. You’ve got this!');render();}},1000);}break;
  case 'reset':stopTimer();state.timer=45;render();break;case 'finish-workout':stopTimer();state.completed=true;render();toast('Workout complete — great work!');break;
- case 'theme':state.dark=!state.dark;render();break;case 'toggle':a.classList.toggle('on');break;
+ case 'progress':go('progress');break;case 'theme':state.dark=!state.dark;render();break;case 'toggle':a.classList.toggle('on');break;
  case 'edit':toast('Profile editing is a demo placeholder.');break;case 'privacy':toast('Connect a privacy policy to enable this action.');break;case 'help':toast('Help center is a demo placeholder.');break;case 'logout':go('welcome');break;
  }
 });
